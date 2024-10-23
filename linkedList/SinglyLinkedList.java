@@ -1,16 +1,6 @@
-package com.cdac.linklist;
+package com.cdac.linkedList;
 
 import com.cdac.interfaces.LinkedList;
-
-class Node{
-	int value;
-	Node next;
-	
-	public Node(int value) {
-		this.value = value;
-		this.next = null;
-	}
-}
 
 public class SinglyLinkedList implements LinkedList {
 	Node head;
@@ -99,7 +89,28 @@ public class SinglyLinkedList implements LinkedList {
 
 	@Override
 	public void deleteAtPos(int pos) {
+		if(head == null) {
+			return ;
+		}
 		
+		if( pos == 1) {
+			deleteAtFirst();
+			return ;
+		}
+		
+		Node ptr = head;
+		int i = 0;
+		
+		while(i < pos-2 && ptr != null) {
+			i++;
+			ptr =  ptr.next;
+		}
+		
+		if(ptr != null) {
+			if(ptr.next == null) {
+				deleteAtEnd();
+			}
+		}
 	}
 
 	@Override
