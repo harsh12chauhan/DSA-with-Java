@@ -1,17 +1,17 @@
-package com.cdac.stack;
+package com.cdac.impl.stack;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.cdac.interfaces.Stack;
+import com.cdac.interfaces.stack.Stack;
 
-public class ArrayListUsingStack implements Stack {
+public class StackUsingArrayList implements Stack {
 	
-	List<? extends Object> list = new ArrayList<>();
+	List<Integer> list = new ArrayList<>();
 
 	@Override
 	public void push() {
-		
+		// TODO Auto-generated method stub
 	}
 
 	@Override

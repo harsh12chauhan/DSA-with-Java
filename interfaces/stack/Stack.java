@@ -1,4 +1,4 @@
-package com.cdac.interfaces;
+package com.cdac.interfaces.stack;
 
 public interface Stack {
 	public void push();

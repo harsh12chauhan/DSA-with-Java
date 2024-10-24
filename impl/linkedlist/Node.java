@@ -1,4 +1,4 @@
-package com.cdac.linkedList;
+package com.cdac.impl.linkedlist;
 
 public class Node{
 	public int value;

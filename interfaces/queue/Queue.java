@@ -1,4 +1,4 @@
-package com.cdac.interfaces;
+package com.cdac.interfaces.queue;
 
 public interface Queue {
 	public void enqueue();

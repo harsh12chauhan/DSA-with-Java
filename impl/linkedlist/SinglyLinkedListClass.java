@@ -1,12 +1,12 @@
-package com.cdac.linkedList;
+package com.cdac.impl.linkedlist;
 
-import com.cdac.interfaces.LinkedList;
+import com.cdac.interfaces.linkedList.SinglyLinkedList;
 
-public class SinglyLinkedList implements LinkedList {
+public class SinglyLinkedListClass implements SinglyLinkedList {
 	Node head;
 	Node tail;
 	
-	public SinglyLinkedList() {
+	public SinglyLinkedListClass() {
 		head = null;
 		tail = null;
 	}
@@ -20,7 +20,7 @@ public class SinglyLinkedList implements LinkedList {
 			tail = newNode;
 			return ;
 		}
-		newNode.next = head.next;
+		newNode.next = head;
 		head =  newNode;
 	}
 
@@ -34,7 +34,7 @@ public class SinglyLinkedList implements LinkedList {
 	@Override
 	public void insertAtPosition(int pos, int value) {
 		
-		if(isEmpty()) {
+		if(isEmpty() || pos == 1) {
 			insertAtFirst(value);
 			return;
 		}
@@ -47,15 +47,18 @@ public class SinglyLinkedList implements LinkedList {
 			i++;
 		}
 		
-		if(ptr.next == null) {
-			insertAtEnd(value);
-			return ;
+		if(ptr != null) {	
+			if(ptr.next == null) {
+				insertAtEnd(value);
+				return ;
+			}
+			
+			Node newNode = new Node(value);
+			newNode.next = ptr.next;
+			ptr.next = newNode;
+			return;
 		}
-		
-		Node newNode = new Node(value);
-		newNode.next = ptr.next;
-		ptr.next = newNode;
-	
+		System.out.println("Invalid Position");
 	}
 
 	@Override
@@ -80,20 +83,24 @@ public class SinglyLinkedList implements LinkedList {
 		
 		Node ptr = head;
 		while(ptr.next.next != null) {
-			ptr =  ptr.next;
+			ptr = ptr.next;
+			
 		}
 		
-		ptr.next = null;
-		tail = ptr;
+		if(ptr != null) {
+			ptr.next = null;
+			tail = ptr;
+			return ;
+		}
 	}
 
 	@Override
 	public void deleteAtPos(int pos) {
-		if(head == null) {
+		if(head == null || pos < 1) {
 			return ;
 		}
 		
-		if( pos == 1) {
+		if( pos == 1 ) {
 			deleteAtFirst();
 			return ;
 		}
@@ -101,29 +108,24 @@ public class SinglyLinkedList implements LinkedList {
 		Node ptr = head;
 		int i = 0;
 		
-		while(i < pos-2 && ptr != null) {
+		while(i <= pos-2 && ptr != null) {
 			i++;
-			ptr =  ptr.next;
+			ptr = ptr.next;
 		}
 		
 		if(ptr != null) {
 			if(ptr.next == null) {
+				System.out.println("delete atend");
 				deleteAtEnd();
+				return;
+			}
+			
+			if(ptr.next != null) {
+				ptr.next = ptr.next.next;
+				return;
 			}
 		}
-	}
-
-	@Override
-	public void traverse() {
-		Node ptr = head;
-		
-		System.out.println("HEAD -> ");
-		while( ptr != null ) {
-			System.out.println(ptr.value + " -> ");
-			ptr = ptr.next;
-		} 
-		System.out.println("NULL");
-		
+		System.out.println("Invalid Index");
 	}
 	
 	@Override
@@ -140,10 +142,22 @@ public class SinglyLinkedList implements LinkedList {
 
 	@Override
 	public boolean isEmpty() {
-		if(head == null && tail == null) {
+		if(head == null) {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public void traverse() {
+		Node ptr = head;
+		
+		System.out.print("HEAD -> ");
+		while( ptr != null ) {
+			System.out.print(ptr.value + " -> ");
+			ptr = ptr.next;
+		} 
+		System.out.println("NULL");	
 	}
 	
 }

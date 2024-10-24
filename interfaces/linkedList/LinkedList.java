@@ -1,4 +1,4 @@
-package com.cdac.interfaces;
+package com.cdac.interfaces.linkedList;
 
 public interface LinkedList {
 	public void insertAtFirst(int value);
@@ -10,7 +10,6 @@ public interface LinkedList {
 	public void deleteAtPos(int pos);
 	
 	public boolean isEmpty();
-	public void traverse();
 	public int getLength();
 	
 }
