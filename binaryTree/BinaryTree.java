@@ -233,6 +233,32 @@ public class BinaryTree implements BinaryTreeInterface {
 		cntNodesByElement(root,element,leafNodesCount);
 		return leafNodesCount.get(); // getting the value from AtomicInteger variable
 	}
-
 	
+	private void calculateHight(BTNode root,int currHeight, AtomicInteger maxi) {
+		
+		if( root == null ) {
+			return;
+		}
+		
+		if (root.left == null && root.right == null) {
+			if(currHeight > maxi.get()) {
+				maxi.set(currHeight);
+			}
+			return;
+		}
+		
+		if(root.left != null) {			
+			calculateHight(root.left,1 + currHeight,maxi);
+		}
+		
+		if(root.right != null) {	
+			calculateHight(root.right,1 + currHeight,maxi);
+		}
+		
+	}
+	public int height() {
+		AtomicInteger maxi = new AtomicInteger(0);
+		calculateHight(root,0,maxi);
+		return maxi.get(); 
+	}
 }
