@@ -1,4 +1,4 @@
-package com.cdac.interfaces.linkedList;
+package com.cdac.linkedList.interfaces;
 
 public interface SortedLinkedList {
 	public void insert(int value);

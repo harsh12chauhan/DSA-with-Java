@@ -1,6 +1,6 @@
-package com.cdac.interfaces.stack;
+package com.cdac.stack.interfaces;
 
-public interface Stack {
+public interface MyStack {
 	public void push();
 	public int pop();
 	public int top();

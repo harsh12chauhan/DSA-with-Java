@@ -1,6 +1,6 @@
-package com.cdac.linkedlistsMain;
+package com.cdac.linkedList.linkedlistsMain;
 
-import com.cdac.impl.linkedlist.SinglyLinkedListClass;
+import com.cdac.linkedList.impl.SinglyLinkedListClass;
 
 public class LinkedListMain {
 

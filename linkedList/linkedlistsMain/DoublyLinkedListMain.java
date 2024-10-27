@@ -1,6 +1,6 @@
-package com.cdac.linkedlistsMain;
+package com.cdac.linkedList.linkedlistsMain;
 
-import com.cdac.impl.linkedlist.DoublyLinkedListClass;
+import com.cdac.linkedList.impl.DoublyLinkedListClass;
 
 public class DoublyLinkedListMain {
 

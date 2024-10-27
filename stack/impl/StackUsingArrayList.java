@@ -1,11 +1,11 @@
-package com.cdac.impl.stack;
+package com.cdac.stack.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.cdac.interfaces.stack.Stack;
+import com.cdac.stack.interfaces.MyStack;
 
-public class StackUsingArrayList implements Stack {
+public class StackUsingArrayList implements MyStack {
 	
 	List<Integer> list = new ArrayList<>();
 

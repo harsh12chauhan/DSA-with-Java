@@ -1,7 +1,7 @@
-package com.cdac.impl.linkedlist;
+package com.cdac.linkedList.impl;
 
 import com.cdac.exceptions.EmptyListsException;
-import com.cdac.interfaces.linkedList.SortedLinkedList;
+import com.cdac.linkedList.interfaces.SortedLinkedList;
 
 public class SortedLinkedListClass implements SortedLinkedList {
 	

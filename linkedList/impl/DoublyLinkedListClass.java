@@ -1,12 +1,13 @@
-package com.cdac.impl.linkedlist;
+package com.cdac.linkedList.impl;
 
-import com.cdac.interfaces.linkedList.SinglyLinkedList;
+import com.cdac.exceptions.EmptyListsException;
+import com.cdac.linkedList.interfaces.DoublyLinkedList;
 
-public class SinglyLinkedListClass implements SinglyLinkedList {
-	Node head;
-	Node tail;
+public class DoublyLinkedListClass implements DoublyLinkedList {
+	DNode head;
+	DNode tail;
 	
-	public SinglyLinkedListClass() {
+	public DoublyLinkedListClass() {
 		head = null;
 		tail = null;
 	}
@@ -14,20 +15,31 @@ public class SinglyLinkedListClass implements SinglyLinkedList {
 	@Override
 	public void insertAtFirst(int value) {
 		
-		Node newNode = new Node(value);
+		DNode newNode = new DNode(value);
+		
 		if(head == null) {
 			head = newNode;
 			tail = newNode;
 			return ;
 		}
+		
+		head.prev = newNode;
 		newNode.next = head;
 		head =  newNode;
 	}
 
 	@Override
 	public void insertAtEnd(int value) {
-		Node newNode = new Node(value);
+		
+		DNode newNode = new DNode(value);
+		if(isEmpty()) {
+			head = newNode;
+			tail = newNode;
+			return;
+		}
+		
 		tail.next = newNode;
+		newNode.prev = tail;
 		tail = newNode;
 	}
 
@@ -40,7 +52,7 @@ public class SinglyLinkedListClass implements SinglyLinkedList {
 		}
 		
 		int i = 0;
-		Node ptr = head;
+		DNode ptr = head;
 		
 		while(i < pos-2 && ptr != null) {
 			ptr = ptr.next;
@@ -53,14 +65,17 @@ public class SinglyLinkedListClass implements SinglyLinkedList {
 				return ;
 			}
 			
-			Node newNode = new Node(value);
+			DNode newNode = new DNode(value);
+			
+			newNode.prev = ptr;
 			newNode.next = ptr.next;
+			ptr.next.prev = newNode;
 			ptr.next = newNode;
 			return;
 		}
 		System.out.println("Invalid Position");
 	}
-
+	
 	@Override
 	public void deleteAtFirst() {
 		if(isEmpty()) {
@@ -68,9 +83,15 @@ public class SinglyLinkedListClass implements SinglyLinkedList {
 			return;
 		}
 		
-		//TODO: TAIL
-		Node temp = head;
-		head =  head.next;
+		DNode temp = head;
+		head = head.next;
+		
+		if(isEmpty()) {
+			tail = null;
+			return;
+		}
+		
+		head.prev = null;
 		temp.next = null;
 	}
 
@@ -81,15 +102,20 @@ public class SinglyLinkedListClass implements SinglyLinkedList {
 			return;
 		}
 		
-		Node ptr = head;
-		while(ptr.next.next != null) {
+		DNode ptr = head;
+		while(ptr.next != null) {
 			ptr = ptr.next;
-			
 		}
 		
 		if(ptr != null) {
+			tail = ptr.prev;
+			head = ptr.next;
+			if(ptr.prev != null) {
+				ptr.prev.next = null;
+				ptr.prev = null;
+			}
+			ptr.prev = null;
 			ptr.next = null;
-			tail = ptr;
 			return ;
 		}
 	}
@@ -105,32 +131,34 @@ public class SinglyLinkedListClass implements SinglyLinkedList {
 			return ;
 		}
 		
-		Node ptr = head;
+		DNode ptr = head;
 		int i = 0;
 		
-		while(i <= pos-2 && ptr != null) {
+		while(i < pos-2 && ptr != null) {
 			i++;
 			ptr = ptr.next;
 		}
 		
 		if(ptr != null) {
 			if(ptr.next == null) {
-				System.out.println("delete atend");
 				deleteAtEnd();
 				return;
 			}
 			
 			if(ptr.next != null) {
-				ptr.next = ptr.next.next;
+				ptr.prev.next = ptr.next;
+				ptr.next.prev = ptr.prev;
+				ptr.next = null;
+				ptr.prev = null;
 				return;
 			}
 		}
 		System.out.println("Invalid Index");
 	}
-	
+
 	@Override
 	public int getLength() {
-		Node ptr = head;
+		DNode ptr = head;
 		
 		int count = 0;
 		while( ptr != null ) {
@@ -142,22 +170,43 @@ public class SinglyLinkedListClass implements SinglyLinkedList {
 
 	@Override
 	public boolean isEmpty() {
-		if(head == null) {
+		if(head == null || tail == null) {
+			try {
+				throw new EmptyListsException("Empty !!!");
+			}catch(EmptyListsException e) {
+				System.out.println(e.getMessage());
+			}
 			return true;
 		}
 		return false;
 	}
 
+
 	@Override
-	public void traverse() {
-		Node ptr = head;
+	public void forwardTraversal() {
 		
+		DNode ptr = head;	
 		System.out.print("HEAD -> ");
-		while( ptr != null ) {
+		while(ptr != null) {
 			System.out.print(ptr.value + " -> ");
 			ptr = ptr.next;
-		} 
+		}
 		System.out.println("NULL");	
+		
+	}
+
+
+	@Override
+	public void backwardTraversal() {
+		
+		DNode ptr = tail;
+		System.out.print("NULL -> ");
+		while(ptr != null) {
+			System.out.print(ptr.value + " -> ");
+			ptr = ptr.prev;
+		}
+		System.out.println("HEAD");	
+		
 	}
 	
 }

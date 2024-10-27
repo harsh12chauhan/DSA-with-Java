@@ -1,5 +1,5 @@
-package com.cdac.linkedlistsMain;
-import com.cdac.impl.linkedlist.SortedDoublyLinkedListClass;
+package com.cdac.linkedList.linkedlistsMain;
+import com.cdac.linkedList.impl.SortedDoublyLinkedListClass;
 
 public class SortedDoublyLinkedListMain {
 
