@@ -42,7 +42,6 @@ public class SortedLinkedListClass implements SortedLinkedList {
 		
 		prev.next = newNode;
 		newNode.next = curr;
-		
 	}
 
 	@Override

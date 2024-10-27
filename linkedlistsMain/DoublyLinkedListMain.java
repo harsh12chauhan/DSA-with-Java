@@ -1,4 +1,4 @@
-package com.cdac.allMainClasses;
+package com.cdac.linkedlistsMain;
 
 import com.cdac.impl.linkedlist.DoublyLinkedListClass;
 
