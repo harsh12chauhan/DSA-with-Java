@@ -1,5 +1,7 @@
 package com.cdac.binarySearchTree;
 
+import com.cdac.treeTraversal.Traversal;
+
 public class BinarySearchTree implements BST {
 	
 	private BSTNode root;
@@ -28,14 +30,56 @@ public class BinarySearchTree implements BST {
 		root =  insertNode(root, value); 
 	}
 	
-	private void deleteNode(BSTNode root, int value) {
-		// TODO Auto-generated method stub
+	// finding the successor
+	private BSTNode getSuccessor(BSTNode succ) {
+		while(succ.left != null) {
+			succ = succ.left;
+		}
+		return succ;
+	}
+	
+	private BSTNode deleteNode(BSTNode root, int value) {
+		if(root == null) {
+			return null;
+		}
 		
+		if(value == root.value) {
+			if(root.left != null && root.right != null) {
+			// both child exists
+				// inorder Successor
+				BSTNode successor = getSuccessor(root.right);
+
+				// swaping current nodes value with its successor value
+				int temp = root.value;
+				root.value = successor.value;
+				successor.value = temp;
+				
+				successor = null;
+				return root;
+			}else if(root.left == null && root.right != null) {
+			// only right node exists
+				return root.right;
+			}else if(root.left != null && root.right == null) {
+			// only left node exists
+				return root.left;
+			}else {
+			// leaf node
+				return null;
+			}
+			
+		} else if(value > root.value) {
+			root.right = deleteNode(root.right,value);
+		} else {
+			root.left = deleteNode(root.left,value);
+		}
+		
+		return root;
 	}
 	@Override
 	public void delete(int value) {
-		deleteNode(root, value);
+		root = deleteNode(root, value);
 	}
+	
 	
 	private void traverseBST(BSTNode root) {
 		if(root == null) {
@@ -55,9 +99,13 @@ public class BinarySearchTree implements BST {
 
 	@Override
 	public void traverse() {
-		traverseBST(root);
+//		traverseBST(root);
+		Traversal.levelorder(root);
+		System.out.println("");
+		System.out.println("========== END =========");
 	}
 
+	
 	private boolean searchNode(BSTNode root,int value) {
 		if(root == null) {
 			return false;
