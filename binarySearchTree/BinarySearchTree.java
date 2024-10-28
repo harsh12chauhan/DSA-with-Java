@@ -47,7 +47,7 @@ public class BinarySearchTree implements BST {
 			if(root.left != null && root.right != null) {
 			// both child exists
 				// inorder Successor
-				BSTNode successor = getSuccessor(root.right);
+				BSTNode successor = Helper.getSuccessor(root.right);
 
 				// swaping current nodes value with its successor value
 				int temp = root.value;
@@ -123,6 +123,30 @@ public class BinarySearchTree implements BST {
 	@Override
 	public boolean search(int value) {
 		return searchNode(root,value);
+	}
+	
+	private int smallestElement(BSTNode root) {
+		if(root.left == null) {
+			return root.value;
+		}
+		
+		return smallestElement(root.left);
+	}
+
+	public int findSmallest() {
+		return smallestElement(root);
+	}
+	
+	private int largestElement(BSTNode root) {
+		if(root.right == null) {
+			return root.value;
+		}
+		
+		return largestElement(root.right);
+	}
+
+	public int findLargest() {
+		return largestElement(root);
 	}
 	
 }

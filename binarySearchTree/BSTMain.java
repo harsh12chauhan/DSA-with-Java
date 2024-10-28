@@ -20,6 +20,9 @@ public class BSTMain {
 		bst.delete(15);
 		bst.traverse();
 		
+		System.out.println("Smallest element present: " + bst.findSmallest());
+		System.out.println("Largest element present: " + bst.findLargest());
+		
 		
 		
 
