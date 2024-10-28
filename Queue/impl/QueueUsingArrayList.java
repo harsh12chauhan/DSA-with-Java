@@ -1,10 +1,10 @@
-package com.cdac.queue.impl;
+package com.cdac.Queue.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.cdac.queue.interfaces.MyQueue;
-import com.cdac.stack.interfaces.MyStack;
+import com.cdac.Queue.interfaces.MyQueue;
+
 
 public class QueueUsingArrayList implements MyQueue {
 	

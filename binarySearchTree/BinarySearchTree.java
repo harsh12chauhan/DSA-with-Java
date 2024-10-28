@@ -81,21 +81,21 @@ public class BinarySearchTree implements BST {
 	}
 	
 	
-	private void traverseBST(BSTNode root) {
-		if(root == null) {
-			return;
-		}
-		
-		if(root.left != null) {
-			traverseBST(root.left);
-		}
-		
-		System.out.print(root.value + " ");
-		
-		if(root.right != null) {
-			traverseBST(root.right);
-		}
-	}
+//	private void traverseBST(BSTNode root) {
+//		if(root == null) {
+//			return;
+//		}
+//		
+//		if(root.left != null) {
+//			traverseBST(root.left);
+//		}
+//		
+//		System.out.print(root.value + " ");
+//		
+//		if(root.right != null) {
+//			traverseBST(root.right);
+//		}
+//	}
 
 	@Override
 	public void traverse() {

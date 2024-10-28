@@ -1,4 +1,4 @@
-package com.cdac.queue.queueMain;
+package com.cdac.Queue.queueMain;
 
 public class QueueMain {
 
