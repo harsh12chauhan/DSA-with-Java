@@ -30,51 +30,52 @@ public class BinarySearchTree implements BST {
 		root =  insertNode(root, value); 
 	}
 	
-	// finding the successor
-	private BSTNode getSuccessor(BSTNode succ) {
-		while(succ.left != null) {
-			succ = succ.left;
-		}
-		return succ;
-	}
-	
 	private BSTNode deleteNode(BSTNode root, int value) {
-		if(root == null) {
-			return null;
-		}
-		
-		if(value == root.value) {
-			if(root.left != null && root.right != null) {
-			// both child exists
-				// inorder Successor
-				BSTNode successor = Helper.getSuccessor(root.right);
+	    if (root == null) {
+	        return null;
+	    }
 
-				// swaping current nodes value with its successor value
-				int temp = root.value;
-				root.value = successor.value;
-				successor.value = temp;
-				
-				successor = null;
-				return root;
-			}else if(root.left == null && root.right != null) {
-			// only right node exists
-				return root.right;
-			}else if(root.left != null && root.right == null) {
-			// only left node exists
-				return root.left;
-			}else {
-			// leaf node
-				return null;
-			}
-			
-		} else if(value > root.value) {
-			root.right = deleteNode(root.right,value);
-		} else {
-			root.left = deleteNode(root.left,value);
-		}
-		
-		return root;
-	}
+	    if (value == root.value) {
+	        if (root.left != null && root.right != null) {
+	            // Both children exist
+	        	//BSTNode succPred = Helper.getSuccessor(root.right);
+	            BSTNode succPred = Helper.getPredecessor(root.left);
+	            root.value = succPred.value; // Swap values
+	            root.right = deleteNode(root.right, succPred.value); // Delete the successor
+	        } else if (root.left == null) {
+	            // Only right child exists or no child (null)
+	            return root.right;
+	        } else if (root.right == null) {
+	            // Only left child exists
+	            return root.left;
+	        } else {
+	            // Leaf node
+	            return null; // Should already be handled above, but good to explicitly show.
+	        }
+	    } else if (value > root.value) {
+	        root.right = deleteNode(root.right, value);
+	    } else {
+	        root.left = deleteNode(root.left, value);
+	    }
+	    return root;
+	}	
+// ===== my code =========================================================================
+//			if(root.left != null && root.right != null) {
+//			// both child exists
+//				//BSTNode succPred = Helper.getSuccessor(root.right);
+//				BSTNode succPred = Helper.getPredecessor(root.left);
+//
+//				// swapping current nodes value with its succPred value
+//				int temp = root.value;
+//				root.value = succPred.value;
+//				succPred.value = temp;
+//				
+//				//return deleteNode(succPred,value);
+//				//succPred = null;
+//				return root;
+//			}
+// ==============================================================================
+	
 	@Override
 	public void delete(int value) {
 		root = deleteNode(root, value);

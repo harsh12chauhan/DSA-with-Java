@@ -11,10 +11,10 @@ public class Helper {
 	}
 	
 	// finding the predecessor
-	public  static  BSTNode getPredecessor(BSTNode succ) {
-		while(succ.right != null) {
-			succ = succ.right;
+	public  static  BSTNode getPredecessor(BSTNode pred) {
+		while(pred.right != null) {
+			pred = pred.right;
 		}
-		return succ;
+		return pred;
 	}
 }
