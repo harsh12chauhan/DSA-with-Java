@@ -32,25 +32,32 @@ public class BinarySearchTree implements BST {
 	
 	private BSTNode deleteNode(BSTNode root, int value) {
 	    if (root == null) {
-	        return null;
+	        return null; 
 	    }
 
 	    if (value == root.value) {
+	    	
 	        if (root.left != null && root.right != null) {
-	            // Both children exist
-	        	//BSTNode succPred = Helper.getSuccessor(root.right);
-	            BSTNode succPred = Helper.getPredecessor(root.left);
-	            root.value = succPred.value; // Swap values
-	            root.right = deleteNode(root.right, succPred.value); // Delete the successor
+	          // Both children exist
+	        	/* 
+		        	//if using predecessor
+		            BSTNode predecessor = Helper.getPredecessor(root.left);
+		            root.value = predecessor.value;                       // Replace value with predecessor's value
+		            root.left = deleteNode(root.left, predecessor.value); // Delete the predecessor
+	        	 */
+	        
+	            //if using Successor
+	            BSTNode successor = Helper.getSuccessor(root.right);
+	            root.value = successor.value; // Replace value with successor's value
+	            root.right = deleteNode(root.right, successor.value); // Delete the successor
+	            
+	            
 	        } else if (root.left == null) {
-	            // Only right child exists or no child (null)
-	            return root.right;
-	        } else if (root.right == null) {
-	            // Only left child exists
-	            return root.left;
+	        	// only right childNode exists
+	            return root.right; 
 	        } else {
-	            // Leaf node
-	            return null; // Should already be handled above, but good to explicitly show.
+	            // Only left childNode exists
+	            return root.left; 
 	        }
 	    } else if (value > root.value) {
 	        root.right = deleteNode(root.right, value);
@@ -58,8 +65,8 @@ public class BinarySearchTree implements BST {
 	        root.left = deleteNode(root.left, value);
 	    }
 	    return root;
-	}	
-// ===== my code =========================================================================
+	}
+// ===== my code issue =========================================================================
 //			if(root.left != null && root.right != null) {
 //			// both child exists
 //				//BSTNode succPred = Helper.getSuccessor(root.right);
@@ -75,35 +82,20 @@ public class BinarySearchTree implements BST {
 //				return root;
 //			}
 // ==============================================================================
-	
 	@Override
 	public void delete(int value) {
 		root = deleteNode(root, value);
 	}
 	
 	
-//	private void traverseBST(BSTNode root) {
-//		if(root == null) {
-//			return;
-//		}
-//		
-//		if(root.left != null) {
-//			traverseBST(root.left);
-//		}
-//		
-//		System.out.print(root.value + " ");
-//		
-//		if(root.right != null) {
-//			traverseBST(root.right);
-//		}
-//	}
-
 	@Override
 	public void traverse() {
-//		traverseBST(root);
 		Traversal.levelorder(root);
 		System.out.println("");
 		System.out.println("========== END =========");
+		Traversal.inOrder(root);
+		System.out.println("");
+		System.out.println("========== end1  =========");
 	}
 
 	

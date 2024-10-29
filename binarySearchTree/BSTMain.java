@@ -20,7 +20,7 @@ public class BSTMain {
 
 		bst.traverse();
 		
-		bst.delete(40);
+		bst.delete(100);
 		bst.traverse();
 		
 		System.out.println("Smallest element present: " + bst.findSmallest());
