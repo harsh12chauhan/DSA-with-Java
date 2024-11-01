@@ -27,7 +27,7 @@ public class HeapMain {
 		
 		// == Heapify ======================================
 		int [] arr = {-1,55,43,54,98,12,43,23,1,3};
-		int size = 10;
+		int size = 9;
 
 		Heapify.convertToHeap(arr, size);
 		

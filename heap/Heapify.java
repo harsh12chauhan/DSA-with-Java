@@ -34,7 +34,7 @@ public class Heapify {
 	}
 	
 	public static void print(int [] arr,int size) {
-		  for( int i = 1 ; i < size ; i++ ){   
+		  for( int i = 1 ; i <= size ; i++ ){   
 			  System.out.print( arr[i] + " ");
 		    }
 		  System.out.println("");
