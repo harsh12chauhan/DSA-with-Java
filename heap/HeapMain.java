@@ -28,8 +28,16 @@ public class HeapMain {
 		// == Heapify ======================================
 		int [] arr = {-1,55,43,54,98,12,43,23,1,3};
 		int size = 9;
-
-		Heapify.convertToHeap(arr, size);
+		
+		// passing true for converting to maxHeap and false for converting to minHeap  
+		System.out.println("max heap:- ");
+		Heapify.convertToHeap(arr, size,true);
+		
+		System.out.println("printing :- ");	
+		Heapify.print(arr, size);
+		
+		System.out.println("Min heap:- ");
+		Heapify.convertToHeap(arr, size,false);
 		
 		System.out.println("printing :- ");	
 		Heapify.print(arr, size);
