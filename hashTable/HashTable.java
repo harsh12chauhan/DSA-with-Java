@@ -3,6 +3,9 @@ package com.cdac.hashTable;
 import java.util.Arrays;
 import java.util.Objects;
 
+import com.cdac.linkedList.impl.SinglyLinkedListClass;
+import com.cdac.linkedList.interfaces.SinglyLinkedList;
+
 public class HashTable {
 	private SinglyLinkedList []hashTable;
 	private int size;
