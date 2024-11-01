@@ -17,7 +17,8 @@ public class HeapMain {
 	    maxHeap.insert(3);
 	    maxHeap.insert(122);
 		
-	
+	    maxHeap.print();
+	    
 	}
 
 }

@@ -29,4 +29,12 @@ public class MaxHeap implements Heapable{
 			index = parent;
 		}
 	}
+	
+	@Override
+	public void print() {
+		for ( int i = 1 ; i <= size ; i++ ) {
+			System.out.print( arr[i] + " ");
+		}
+		System.out.println("");
+	}
 }
