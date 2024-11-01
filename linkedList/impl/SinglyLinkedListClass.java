@@ -1,5 +1,6 @@
 package com.cdac.linkedList.impl;
 
+import com.cdac.hashTable.Node;
 import com.cdac.linkedList.interfaces.SinglyLinkedList;
 
 public class SinglyLinkedListClass implements SinglyLinkedList {
@@ -27,6 +28,10 @@ public class SinglyLinkedListClass implements SinglyLinkedList {
 	@Override
 	public void insertAtEnd(int value) {
 		Node newNode = new Node(value);
+		if(head == null) {
+			insertAtFirst(value);
+			return;
+		}
 		tail.next = newNode;
 		tail = newNode;
 	}
@@ -158,6 +163,5 @@ public class SinglyLinkedListClass implements SinglyLinkedList {
 			ptr = ptr.next;
 		} 
 		System.out.println("NULL");	
-	}
-	
+	}	
 }
