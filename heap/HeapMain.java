@@ -17,7 +17,14 @@ public class HeapMain {
 	    maxHeap.insert(3);
 	    maxHeap.insert(122);
 		
-	    maxHeap.print();
+
+	    System.out.println("before delete: ");
+		maxHeap.print();
+		
+		maxHeap.delete();
+		
+		System.out.println("after delete: ");
+		maxHeap.print();
 	    
 	}
 
