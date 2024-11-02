@@ -41,7 +41,6 @@ public class HeapMain {
 		
 		System.out.println("printing :- ");	
 		Heapify.print(arr, size);
-	    
 	}
 
 }

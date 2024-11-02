@@ -19,12 +19,43 @@ public class Heapify {
 			largest = rightChild;
 		}
 		
-		if ( largest != index ) {
-			int temp = arr[index];
-			arr[index] = arr[largest];
-			arr[largest] = temp;
+		if ( largest == index ) {
+			return;
+		}
+		
+		int temp = arr[index];
+		arr[index] = arr[largest];
+		arr[largest] = temp;
+		
+		//tail recursion
+		toMaxHeap(arr,size,largest);
+	}
+	
+	private static void toMaxHeapRemovedTailRecr(int []arr,int size,int index) {
+		int largest = index;
+		
+		while( true ) {
+			int leftChild = 2*index;
+			int rightChild = 2*index + 1;
 			
-			toMaxHeap(arr,size,largest);
+			
+			if ( leftChild < size && arr[largest] < arr[leftChild]) {
+				largest = leftChild;
+			}
+			
+			if ( rightChild < size && arr[largest] < arr[rightChild]) {
+				largest = rightChild;
+			}
+			
+			if ( largest != index ) {
+				int temp = arr[index];
+				arr[index] = arr[largest];
+				arr[largest] = temp;	
+				
+				index = largest;
+			}else {
+				return;
+			}
 		}
 	}
 	
@@ -61,6 +92,7 @@ public class Heapify {
 		if ( flag ) {
 			//minHeap
 			for (int i = size/2 ; i > 0 ; i--) {			
+				//toMaxHeapRemovedTailRecr(arr,size,i);
 				toMaxHeap(arr,size,i);
 			}	
 			
