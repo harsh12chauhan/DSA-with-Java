@@ -26,20 +26,26 @@ public class HeapMain {
 //		maxHeap.print();
 		
 		// == Heapify ======================================
-		int [] arr = {-1,55,43,54,98,12,43,23,1,3};
-		int size = 9;
+		int [] arr = {-1,55,43,54,98,12,23,1,3};
+		int size = 8;
 		
 		// passing true for converting to maxHeap and false for converting to minHeap  
-		System.out.println("max heap:- ");
-		Heapify.convertToHeap(arr, size,true);
+//		System.out.println("max heap:- ");
+//		Heapify.convertToHeap(arr, size,true);
+//		
+//		System.out.println("printing :- ");	
+//		Heapify.print(arr, size);
+//		
+//		System.out.println("Min heap:- ");
+//		Heapify.convertToHeap(arr, size,false);
+//		
+//		System.out.println("printing :- ");	
+//		Heapify.print(arr, size);
 		
-		System.out.println("printing :- ");	
-		Heapify.print(arr, size);
 		
-		System.out.println("Min heap:- ");
-		Heapify.convertToHeap(arr, size,false);
+		// == Heap Sort =====================================
+		HeapSort.sort(arr, size);
 		
-		System.out.println("printing :- ");	
 		Heapify.print(arr, size);
 	}
 

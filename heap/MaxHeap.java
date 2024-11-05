@@ -75,7 +75,5 @@ public class MaxHeap implements Heapable{
 			
 			return;
 		}
-		
-		
 	}
 }

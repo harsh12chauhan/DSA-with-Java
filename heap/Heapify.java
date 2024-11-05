@@ -31,33 +31,33 @@ public class Heapify {
 		toMaxHeap(arr,size,largest);
 	}
 	
-	private static void toMaxHeapRemovedTailRecr(int []arr,int size,int index) {
-		int largest = index;
-		
-		while( true ) {
-			int leftChild = 2*index;
-			int rightChild = 2*index + 1;
-			
-			
-			if ( leftChild < size && arr[largest] < arr[leftChild]) {
-				largest = leftChild;
-			}
-			
-			if ( rightChild < size && arr[largest] < arr[rightChild]) {
-				largest = rightChild;
-			}
-			
-			if ( largest != index ) {
-				int temp = arr[index];
-				arr[index] = arr[largest];
-				arr[largest] = temp;	
-				
-				index = largest;
-			}else {
-				return;
-			}
-		}
-	}
+//	private static void toMaxHeapRemovedTailRecr(int []arr,int size,int index) {
+//		int largest = index;
+//		
+//		while( true ) {
+//			int leftChild = 2*index;
+//			int rightChild = 2*index + 1;
+//			
+//			
+//			if ( leftChild < size && arr[largest] < arr[leftChild]) {
+//				largest = leftChild;
+//			}
+//			
+//			if ( rightChild < size && arr[largest] < arr[rightChild]) {
+//				largest = rightChild;
+//			}
+//			
+//			if ( largest != index ) {
+//				int temp = arr[index];
+//				arr[index] = arr[largest];
+//				arr[largest] = temp;	
+//				
+//				index = largest;
+//			}else {
+//				return;
+//			}
+//		}
+//	}
 	
 	private static void toMinHeap(int []arr,int size,int index) {
 		int smallest = index;

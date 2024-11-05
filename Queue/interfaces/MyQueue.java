@@ -1,9 +1,9 @@
 package com.cdac.Queue.interfaces;
 
 public interface MyQueue {
-	public void enqueue();
+	public void enqueue(int data);
 	public void dequeue();
-	public void front();
+	public int front();
 	public boolean isEmpty();
 	public boolean isFull();	
 }
